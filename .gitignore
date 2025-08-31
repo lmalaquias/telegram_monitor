@@ -1,6 +1,51 @@
+# Telegram Channel Monitor - .gitignore
+# Author: Leandro Malaquias
+
+# ==========================================
+# PROJECT SPECIFIC FILES (SENSITIVE DATA)
+# ==========================================
+
+# Telegram session files (CRITICAL - Contains auth tokens)
+*.session
+*.session-journal
+session.*
+
+# Excel output files with sensitive data
+*.xlsx
+*.xls
+observer_credentials_data.xlsx
+credentials_data.xlsx
+threat_intelligence_data.xlsx
+
+# Downloaded compressed files and extracted data
+downloads/
+processed/
+extracted/
+temp_files/
+
+# Log files that may contain sensitive information
+*.log
+logs/
+monitor.log
+telegram_monitor.log
+
+# Configuration files with API credentials
+config.py
+config.json
+.env
+credentials.txt
+
+# Backup files
+*.bak
+*.backup
+
+# ==========================================
+# PYTHON
+# ==========================================
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[codz]
+*.py[cod]
 *$py.class
 
 # C extensions
@@ -46,7 +91,7 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.py.cover
+*.py,cover
 .hypothesis/
 .pytest_cache/
 cover/
@@ -94,35 +139,20 @@ ipython_config.py
 #   install all needed dependencies.
 #Pipfile.lock
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
 #   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
 #poetry.lock
-#poetry.toml
 
 # pdm
 #   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
 #pdm.lock
-#pdm.toml
-.pdm-python
-.pdm-build/
-
-# pixi
-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
-#pixi.lock
-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
-#   in the .venv directory. It is recommended not to include this directory in version control.
-.pixi
+#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
+#   in version control.
+#   https://pdm.fming.dev/#use-with-ide
+.pdm.toml
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -136,7 +166,6 @@ celerybeat.pid
 
 # Environments
 .env
-.envrc
 .venv
 env/
 venv/
@@ -168,40 +197,172 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
-
-# Abstra
-# Abstra is an AI-powered process automation framework.
-# Ignore directories containing user credentials, local state, and settings.
-# Learn more at https://abstra.io/docs
-.abstra/
+# ==========================================
+# IDEs and EDITORS
+# ==========================================
 
 # Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#  you could uncomment the following to ignore the entire vscode folder
-# .vscode/
+.vscode/
+*.code-workspace
 
-# Ruff stuff:
-.ruff_cache/
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
 
-# PyPI configuration file
-.pypirc
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
 
-# Cursor
-#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
-.cursorignore
-.cursorindexingignore
+# Vim
+*~
+*.swp
+*.swo
+*tmp*
 
-# Marimo
-marimo/_static/
-marimo/_lsp/
-__marimo__/
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ==========================================
+# OPERATING SYSTEMS
+# ==========================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ==========================================
+# ARCHIVES AND TEMPORARY FILES
+# ==========================================
+
+# Compressed files (may contain sensitive data)
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tgz
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==========================================
+# DATABASE FILES
+# ==========================================
+
+# SQLite
+*.db
+*.db3
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# SECURITY AND CREDENTIALS
+# ==========================================
+
+# SSH keys
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+
+# Environment variables and secrets
+.env.local
+.env.*.local
+secrets.txt
+api_keys.txt
+
+# ==========================================
+# PROJECT DOCUMENTATION (Generated)
+# ==========================================
+
+# Generated documentation
+docs/build/
+docs/_build/
+site/
+
+# ==========================================
+# MONITORING AND ANALYTICS
+# ==========================================
+
+# Monitoring files
+*.pid
+*.lock
+
+# ==========================================
+# CUSTOM PATTERNS (Add your specific ignores here)
+# ==========================================
+
+# Custom data directories
+data/
+output/
+reports/
+samples/
+
+# Test files with real data
+test_data/
+real_samples/
