@@ -144,4 +144,4 @@ Users are responsible for ensuring compliance with all applicable laws and regul
 
 ## 📄 License
 
-This project is licensed under the GNU 3 License
+This project is licensed under the GPL 3 License
